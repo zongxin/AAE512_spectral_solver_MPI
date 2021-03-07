@@ -1,0 +1,1 @@
+mpicc  -llapack -lblas -g -o  test untitled.cpp -lstdc++

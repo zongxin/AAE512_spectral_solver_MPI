@@ -1,0 +1,170 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+//#include "variable.h"
+#include "in_put.h"
+using namespace std;
+class Block{
+public:
+ 	double ratio;
+ 	double offset;
+ 	double* ug_new_class;// 		 = new double[ng];
+  	double* ul_class;// 		 = new double[nl];
+  	double* Flux_lx_class;// 		 = new double[nl];
+	
+	Block(int ng, int nl)
+	{
+		ug_new_class = new double[ng];
+		ul_class = new double[nl];
+		Flux_lx_class = new double[nl];
+	}
+	~Block(){
+	cout<<"deleted element object";
+	}
+				
+
+};
+
+
+/*
+class Block_2d{
+ //public:
+		
+		double* ug_new_class 		 = new double[ng*ng];
+
+		//first flux on l
+		double* ul_x_class 		     = new double[ng*nl];
+		double* ul_y_class 		     = new double[nl*ng];
+
+		//second flux on l
+		double* Flux_lx_class 		 = new double[ng*nl];
+		double* Flux_ly_class 		 = new double[nl*ng];
+
+		double* Flux_lx_class_F		 = new double[ng*nl];
+		double* Flux_lx_class_G		 = new double[ng*nl];
+		double* Flux_ly_class_G		 = new double[nl*ng];
+		double* Flux_ly_class_F		 = new double[nl*ng];
+
+		//Geometry info input
+		double  x_no[4];
+		double  y_no[4];
+		double  x_fa[4];
+		double  y_fa[4];
+
+		int	 	my_fa[4];
+		int 	my_WALL_fa[4]={-2,-2,-2,-2};
+		int 	my_HOLE_fa[4]={-2,-2,-2,-2};
+		int 	my_nei[4];
+		double  my_theta[2]={10,10}; //begin,end
+		double  my_c[2];// x, y
+		double  my_R=1;
+		
+		double* xxg 					 = new double[ng*ng];//real coordinate		
+		double* yyg 					 = new double[ng*ng];	
+
+		//mapping
+ 		double* xX = new double[nl*ng];
+ 		double* xY = new double[ng*nl];
+ 		double* yX = new double[nl*ng];
+ 		double* yY = new double[ng*nl];
+ 		double* J_inv  = new double[ng*ng];
+
+ 		void Block_shape(int icv);
+ 		void mapping(int icv);
+
+};
+
+void Block_2d::Block_shape(int icv)
+{
+
+	for (int i=0;i<NT_HOLEfa;i++){
+		if (icv==HOLE1_cv[i]){
+			my_c[0]=c_list[0];
+			my_c[1]=c_list[1];
+			break;
+		}
+		if (icv==HOLE2_cv[i]){
+			my_c[0]=c_list[2];
+			my_c[1]=c_list[3];
+			break;
+		}	
+		if (icv==HOLE3_cv[i]){
+			my_c[0]=c_list[4];
+			my_c[1]=c_list[5];
+			break;
+		}	
+		if (icv==HOLE4_cv[i]){
+			my_c[0]=c_list[6];
+			my_c[1]=c_list[7];
+			break;
+		}	
+		if (icv==HOLE5_cv[i]){
+			my_c[0]=c_list[8];
+			my_c[1]=c_list[9];
+			break;
+		}								
+	}
+
+	for (int i=0;i<4;i++){
+
+		x_no[i]		= nox_ocv[icv*4+i];
+		y_no[i]		= noy_ocv[icv*4+i];
+		x_fa[i]		= fax_ocv[icv*4+i];
+		y_fa[i]		= fax_ocv[icv*4+i];
+		my_fa[i]	= faocv  [icv*4+i];
+		my_nei[i]	= neiocv [icv*4+i];
+	}
+	int ii;
+
+	for (int j=0;j<NT_HOLEfa;j++){
+
+
+		for (int i=0;i<4;i++){
+
+			if (my_fa[i]==HOLE_fa[j]){
+
+				//get wall number
+				my_HOLE_fa[i]=my_fa[i];
+
+				//get theta 
+				double dx=x_no[i]-my_c[0];
+				double dy=y_no[i]-my_c[1];	
+			
+				if ((dx==0)&&(dy<0)){
+					my_theta[1]=M_PI*3/2;					
+				}			
+				else if ((dx==0)&&(dy>0)){
+					my_theta[1]=M_PI*0.5;					
+				}	
+				else if (dx!=0){
+					my_theta[1]=atan(dy/dx);					
+				}	
+		
+				if (dx<0){
+					my_theta[1]=my_theta[1]+M_PI;
+				}
+				if ((dx>0)&&(dy<=0)){
+					my_theta[1]=my_theta[1]+M_PI*2;		
+	
+				}	
+				if (icv==1)	{
+			}
+				my_theta[0]=my_theta[1]-M_PI/4.0;															
+			}//end ==
+		}
+		
+	}//end hole
+
+	for (int j=0;j<N_WALLfa;j++){
+		for (int i=0;i<4;i++){
+
+			if (my_fa[i]==WALL_fa[j]){	
+				my_WALL_fa[i]=my_fa[i];
+			}
+		}
+	}//end wall		
+	
+
+}
+*/
